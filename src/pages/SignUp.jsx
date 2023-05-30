@@ -50,7 +50,7 @@ const SignUp = () => {
             </div>
             <div className="grid grid-cols-2 w-[60%] h-[50px] mt-6">
               <input
-                className="border  outline-none px-2"
+                className="border  text-black outline-none px-2"
                 type="email"
                 placeholder="Email Address"
                 name="email"
@@ -64,10 +64,11 @@ const SignUp = () => {
               />
               {showPassword && (
                 <input
-                  className="border outline-none px-2"
+                  className="border text-black outline-none px-2"
                   type="password"
                   placeholder="Password"
                   name="password"
+
                   value={formVales.password}
                   onChange={(e) =>
                     setformValues({

@@ -8,6 +8,8 @@
   html {
     font-family: "Poppins", sans-serif;
     background-color: black;
+    color: white;
+    overflow-x : hidden;
 
   }
 
@@ -35,3 +37,52 @@ nav {
  
 }
 
+
+
+.container {
+  gap: 1rem;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.container h1 {
+  margin-left: 50px;
+}
+
+.container .wrapper .slider {
+  width: max-content;
+  gap: 1rem;
+  transform: translateX(0px);
+  transition: 0.3s ease-in-out;
+  margin-left: 50px;
+}
+
+.container .wrapper .slider-action {
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  transition: 0.3s ease-in-out;
+}
+
+.container .wrapper .slider-action svg {
+  font-size: 2rem;
+}
+
+.container .wrapper .none {
+  display: none;
+}
+
+.container.show-controls .slider-action {
+  display: flex;
+}
+
+.container .wrapper .slider-action.left {
+  left: 0;
+}
+
+.container .wrapper .slider-action.right {
+  right: 0;
+}

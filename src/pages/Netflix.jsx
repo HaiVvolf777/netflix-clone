@@ -14,6 +14,7 @@ import Slider from "../components/Slider";
 const Netflix = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   const movies = useSelector((state) => state.netflix.movies);
   const genres = useSelector((state) => state.netflix.genres);
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
@@ -34,8 +35,13 @@ const Netflix = () => {
   }, [genresLoaded]);
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (!currentUser) navigate("/login");
+    if (currentUser) {
+      setIsAuth(true);
+    } else {
+      navigate("/login");
+    }
   });
+  
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -44,6 +50,7 @@ const Netflix = () => {
 
 
   return (
+    isAuth && (
     <>
     <div>
       <NavBar isScrolled={isScrolled} />
@@ -60,7 +67,7 @@ const Netflix = () => {
           <div className="buttons flex mt-14 gap-x-4 ">
             <button
               onClick={() => navigate("/player")}
-              className="flex justify-center items-center bg-white gap-x-1 px-4 py-1 rounded-sm transition duration-200 ease-in-out hover:opacity-80"
+              className="flex justify-center items-center text-black bg-white gap-x-1 px-4 py-1 rounded-sm transition duration-200 ease-in-out hover:opacity-80"
             >
               <FaPlay />
               Play
@@ -75,6 +82,7 @@ const Netflix = () => {
       <Slider movies={movies} />
     </div>
     </>
+    )
   );
 };
 
